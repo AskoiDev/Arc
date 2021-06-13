@@ -7,24 +7,35 @@ export class Config {
     prefix;
     supportServerID;
     userID;
+    channelID;
 
     constructor() {
-        // Your bot token
+        // Your bot's token
         this.token = '';
 
-        // Your bot default prefix
+        // You bot's default prefix
         this.prefix = ''
 
         // Your support server ID
         this.supportServerID = '';
 
-        // The user IDs
-        this.userID = {
-            // Your ID
-            botOwner = '',
+        // The user and channel IDs we will store
+        this.userID = {};
+        this.channelID = {};
 
-            // Your devs IDs (if any)
-            botDevs = []
-        };
+
+        // Your ID
+        this.userID.botOwner = '';
+        
+        // Your devs IDs (if any)
+        this.userID.botDevs = [''];
+
+
+        // The ID of channel that we will log errors
+        this.channelID.errorChannel = '';
+        // The ID of channel that we will log join and leave events
+        this.channelID.joinLeaveChannel = '';
+        // The ID of channel we will log the ready evenet
+        this.channelID.readyChannel = '';
     }
 }
