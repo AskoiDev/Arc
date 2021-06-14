@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "build": "bash ./build.sh",
-    "start": "bash ./start.sh"
+    "start": "bash ./start.sh",
+    "quickstart": "npm run build && node .",
+    "qs": "npm run quickstart"
   },
   "repository": {
     "type": "git",

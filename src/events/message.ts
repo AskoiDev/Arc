@@ -28,6 +28,8 @@ export const event: Event = {
             if (message.content === `<@${client.user?.id}>` || message.content === `<@!${client.user?.id}>`) {
                 return message.channel.send(`Hey there <@${message.author.id}>!\nMy prefix ${message.guild ? 'for this server' : ''} is \`${prefix}\`\n\nRun \`${prefix}help\` to see a list of all my commands!`);
             }
+
+            client.prefix = prefix;
     
             if (!message.content.startsWith(prefix)) return;
 
@@ -62,6 +64,10 @@ export const event: Event = {
                 .setColor(0xFF0000);
 
                 return message.channel.send(embed);
+            }
+
+            if (args[0] === '--help' || args[0] === '-h') {
+                return client.commands?.get('help')?.run({ embed, client, message, msg: message, data, args: [cmd] });
             }
 
             command.run({

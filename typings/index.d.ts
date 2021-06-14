@@ -8,7 +8,7 @@ interface Command {
     dev: boolean;
     owner: boolean;
     desc: string;
-    usage: string;
+    usage: string[];
     scope: 'guild' | 'dm' | 'all';
 
     run: (args: CommandArguments) => void;
@@ -16,6 +16,7 @@ interface Command {
 
 interface MainClient extends BaseClient {
     commands?: Collection<string, Command>;
+    prefix?: string;
     data: DB;
     ownerID: string;
     mongoDB: string;
