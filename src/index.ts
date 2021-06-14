@@ -1,4 +1,4 @@
-import { Command, Event } from '../typings/index'
+import { Command, Event, MainClient } from '../typings/index'
 import { Collection } from 'discord.js';
 import { Client } from './utils/client.js';
 import { readdirSync } from 'fs';
@@ -7,7 +7,7 @@ import { config } from './utils/config.js';
 import mongoose from 'mongoose';
 import { sleep } from './utils/time.js';
 
-const client = new Client();
+const client: MainClient = new Client();
 client.commands = new Collection<string, Command>();
 
 async function main(): Promise<void> {

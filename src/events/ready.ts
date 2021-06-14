@@ -10,7 +10,7 @@ export const event: Event = {
         client.channels.fetch(config.channelID.readyChannel).then((channel) => {
             const embed: MessageEmbed = new MessageEmbed()
             .setTitle('Ready')
-            .setAuthor(client.user?.tag, client.user?.displayAvatarURL({ dynamic: true }))
+            .setAuthor(client.user?.username, client.user?.displayAvatarURL({ dynamic: true }))
             .setThumbnail(client.user?.displayAvatarURL({ dynamic: true }) as string)
             .setColor(0x00FF00)
             .addField('Server(s)', `\`${client.guilds.cache.size}\``, true)
@@ -23,4 +23,4 @@ export const event: Event = {
         client.user?.setActivity({ name: `over ${client.guilds.cache.size} server(s)`, type: 'WATCHING' })
         return logger('info', `Logged in as ${client.user?.tag}`);
     }
-}
+};
