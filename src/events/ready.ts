@@ -9,7 +9,7 @@ export const event: Event = {
     emit: (client: Client) => {
         client.channels.fetch(config.channelID.readyChannel).then((channel) => {
             const embed: MessageEmbed = new MessageEmbed()
-            .setTitle('Logged in')
+            .setTitle('Ready')
             .setAuthor(client.user?.tag, client.user?.displayAvatarURL({ dynamic: true }))
             .setThumbnail(client.user?.displayAvatarURL({ dynamic: true }) as string)
             .setColor(0x00FF00)

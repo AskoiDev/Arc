@@ -22,15 +22,6 @@ if test -d "$GIT" && command -v git &> /dev/null ; then
     printf "(\033[1;32mInfo\033[1;0m): Done\n"
 fi
 
-# Check for the `dist` directory
-# If doesn't exists, create it
-# If exists, clear the content
-if ! test -d $DIR ; then
-    mkdir dist
-elif [ "$(ls -A $DIR)" ] ; then
-    rm -rf dist/*
-fi
-
 # Build the TypeScript project
 printf "(\033[1;32mInfo\033[1;0m): Building project...\n"
 bash ./build.sh

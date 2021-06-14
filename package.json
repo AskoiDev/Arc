@@ -27,6 +27,7 @@
     "@types/chalk": "^2.2.0",
     "chalk": "^4.1.1",
     "discord.js": "^12.5.3",
+    "mongoose": "^5.12.13",
     "node-fetch": "^2.6.1",
     "typescript": "^4.3.2"
   },

@@ -1,3 +1,12 @@
+# Check for the `dist` directory
+# If doesn't exists, create it
+# If exists, clear the content
+if ! test -d $DIR ; then
+    mkdir dist
+elif [ "$(ls -A $DIR)" ] ; then
+    rm -rf dist/*
+fi
+
 # Check for `node` in PATH
 if ! command -v node &> /dev/null ; then
     printf "(\033[1;31mError\033[1;0m): NodeJS not found on your machine\n"

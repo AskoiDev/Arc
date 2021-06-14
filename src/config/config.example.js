@@ -8,6 +8,7 @@ export class Config {
     supportServerID;
     userID;
     channelID;
+    mongoDB;
 
     constructor() {
         // Your bot's token
@@ -22,6 +23,9 @@ export class Config {
         // The user and channel IDs we will store
         this.userID = {};
         this.channelID = {};
+
+        // The MongoDB URI
+        this.mongoDB = '';
 
 
         // Your ID
