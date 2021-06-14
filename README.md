@@ -5,8 +5,7 @@
 ## Prerequisite
 1. [NodeJS](https://nodejs.org/ 'NodeJS')
 2. [NPM](https://npmjs.org/ 'NPM')
-3. [TypeScript](https://typescriptlang.org/ 'TypeScript')
-4. [Git](https://git-scm.org/ 'Git')
+3. [Git](https://git-scm.org/ 'Git')
 
 ## Cloning
 Use [`git`](https://git-scm.org/ 'Git') to clone this project.
