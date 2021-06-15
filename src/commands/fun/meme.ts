@@ -10,8 +10,9 @@ export const command: Command = {
     desc: 'Get a random meme from Reddit (https://reddit.com/)',
     usage: ['{prefix}meme'],
     scope: 'all',
+    nsfw: false,
 
-    async run({ client }) {
+    async run({ embed, message }): Promise<void> {
         const subArr: string[] = ['memes', 'dankmemes'].map(x => `https://api.reddit.com/r/${x}.json`);
         const sub = subArr[Math.floor(Math.random() * subArr.length)];
 
@@ -19,7 +20,16 @@ export const command: Command = {
         const memes = await fetch(sub);
         if (memes.status === 200) {
             const meme = (await memes.json()).data.children;
-            console.log(meme);
+            const post = meme[Math.floor(Math.random() * meme.length)].data;
+
+            embed
+            .setTitle(post.title)
+            .setImage(post.url_overridden_by_dest)
+            .setColor('RANDOM');
+
+            message.channel.send(embed);
         }
+
+        return;
     }
 }

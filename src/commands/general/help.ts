@@ -11,6 +11,7 @@ export const command: Command = {
     desc: 'Get info on a specific command',
     usage: ['{prefix}help', '{prefix}help <command name>'],
     scope: 'all',
+    nsfw: false,
 
     async run({ embed, client, message, args}): Promise<void> {
         const cmd: Command | undefined = args[0] ? (client.commands?.get(args[0].toLowerCase()) || client.commands?.find(cmd => cmd.aliases && cmd.aliases.includes(args[0].toLowerCase()))) : undefined;

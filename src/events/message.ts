@@ -23,7 +23,7 @@ export const event: Event = {
             if (message.author.bot) return;
             if (message.guild) data.guild = await client.data.getGuild(message.guild?.id);
     
-            prefix = data.guild.prefix ? data.guild.prefix : config.prefix;
+            prefix = data.guild?.prefix ? data.guild.prefix : config.prefix;
             
             if (message.content === `<@${client.user?.id}>` || message.content === `<@!${client.user?.id}>`) {
                 return message.channel.send(`Hey there <@${message.author.id}>!\nMy prefix ${message.guild ? 'for this server' : ''} is \`${prefix}\`\n\nRun \`${prefix}help\` to see a list of all my commands!`);
@@ -64,7 +64,16 @@ export const event: Event = {
                 .setColor(0xFF0000);
 
                 return message.channel.send(embed);
-            };
+            }
+
+            else if (command.nsfw && (message.guild && !(message.channel as TextChannel).nsfw)) {
+                embed
+                .setTitle('Error')
+                .setDescription('This command can only be used in NSFW locked channels or my DMs')
+                .setColor(0xFF000);
+
+                return message.channel.send(embed);
+            }
 
             await command.run({
                 embed: embed,

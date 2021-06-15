@@ -10,6 +10,7 @@ interface Command {
     desc: string;
     usage: string[];
     scope: 'guild' | 'dm' | 'all';
+    nsfw: boolean;
 
     run: (args: CommandArguments) => Promise<void> | void;
 };
