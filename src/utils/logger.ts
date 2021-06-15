@@ -8,26 +8,31 @@ export function logger(type: LoggerType, message: string): void {
         case 'info': {
             console.log(`[${getTimeString()}] [${chalk.blueBright(type.toUpperCase())}]: ${message}`);
             break;
-        }
+        };
         
         case 'warn': {
             console.log(`[${getTimeString()}] [${chalk.keyword('orange')(type.toUpperCase())}]: ${message}`);
             break;
-        }
+        };
         
         case 'error': {
             console.log(`[${getTimeString()}] [${chalk.red(type.toUpperCase())}]: ${message}`);
             break;
-        }
+        };
 
-        case 'log':{
+        case 'log': {
             console.log(`[${getTimeString()}] [${chalk.gray(type.toUpperCase())}]: ${message}`);
             break;
-        }
+        };
+
+        case 'load': {
+            console.log(`[${getTimeString()}] [${chalk.gray(type.toUpperCase())}]: ${message}`);
+            break;
+        };
         
-        default: {
+        case 'connect': {
             console.log(`[${getTimeString()}] [${chalk.green(type.toUpperCase())}]: ${message}`);
             break;
-        }
-    }
-}
+        };
+    };
+};

@@ -11,7 +11,7 @@ export function help(client: MainClient): any[] {
         const commands = client.commands?.filter(x => x.category === category).map(x => x.name);;
         const command = (commands?.length as number) < 1 ? 'None' : (commands?.join('`, `') as string);
         _.push({ category: category, names: `\`${command}\`` });
-    }
+    };
 
     return _;
-}
+};

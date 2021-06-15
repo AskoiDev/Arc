@@ -17,13 +17,13 @@ export class Client extends BaseClient {
 
         this.data = {} as DB;
         this.data.getGuild = this.getGuildDB
-    }
+    };
 
     public async getOwner(): Promise<User> {
         return await this.users.fetch(this.ownerID);
-    }
+    };
 
     private async getGuildDB(key: string): Promise<any> {
         return await getGuild(key);
-    }
-}
+    };
+};

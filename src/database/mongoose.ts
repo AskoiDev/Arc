@@ -15,9 +15,9 @@ export async function getGuild(key: string): Promise<any> {
             });
 
             await guildDB.save();
-            return guildDB
+            return guildDB;
         }
     } catch (error) {
-        logger('error', error.message)
-    }
-}
+        logger('error', error.message);
+    };
+};

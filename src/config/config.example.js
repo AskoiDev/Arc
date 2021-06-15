@@ -41,5 +41,5 @@ export class Config {
         this.channelID.joinLeaveChannel = '';
         // The ID of channel we will log the ready evenet
         this.channelID.readyChannel = '';
-    }
-}
+    };
+};

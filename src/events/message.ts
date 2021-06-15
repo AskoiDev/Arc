@@ -27,7 +27,7 @@ export const event: Event = {
             
             if (message.content === `<@${client.user?.id}>` || message.content === `<@!${client.user?.id}>`) {
                 return message.channel.send(`Hey there <@${message.author.id}>!\nMy prefix ${message.guild ? 'for this server' : ''} is \`${prefix}\`\n\nRun \`${prefix}help\` to see a list of all my commands!`);
-            }
+            };
 
             client.prefix = prefix;
     
@@ -64,13 +64,9 @@ export const event: Event = {
                 .setColor(0xFF0000);
 
                 return message.channel.send(embed);
-            }
+            };
 
-            if (args[0] === '--help' || args[0] === '-h') {
-                return client.commands?.get('help')?.run({ embed, client, message, msg: message, data, args: [cmd] });
-            }
-
-            command.run({
+            await command.run({
                 embed: embed,
                 client: client,
                 message: message,
@@ -86,15 +82,14 @@ export const event: Event = {
             .setTitle('Error')
             .setAuthor(client.user?.tag, client.user?.displayAvatarURL({ dynamic: true }))
             .setThumbnail(client.user?.displayAvatarURL({ dynamic: true }) as string)
-            .setDescription('Error occurred')
             .setColor(0xFF0000)
-            .addField('Error name', `\`\`\`\n${error.name}\n\`\`\``)
-            .addField('Error message', `\`\`\`\n${error.message}\n\`\`\``)
+            .setDescription(`\`\`\`js\n${error.name}: "${error.message}"\n\`\`\``)
             .setTimestamp();
 
+
             [message.channel, await client.channels.fetch(config.channelID.errorChannel)].forEach((channel) => {
-                return (channel as TextChannel).send(embed);
+                return (channel as TextChannel).send(embed)
             });
         };
     }
-}
+};

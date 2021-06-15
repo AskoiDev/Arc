@@ -9,14 +9,12 @@ export const event: Event = {
     emitter: 'on',
     emit: (error: Error, client: Client) => {
         client.channels.fetch(config.channelID.errorChannel).then((channel) => {
-            const embed: MessageEmbed = new MessageEmbed()
-            .setTitle('Error')
+            const embed = new MessageEmbed()
+            .setTitle('An error occurred')
             .setAuthor(client.user?.tag, client.user?.displayAvatarURL({ dynamic: true }))
             .setThumbnail(client.user?.displayAvatarURL({ dynamic: true }) as string)
-            .setDescription('Error occurred')
             .setColor(0xFF0000)
-            .addField('Error name', `\`\`\`\n${error.name}\n\`\`\``)
-            .addField('Error message', `\`\`\`\n${error.message}\n\`\`\``)
+            .setDescription(`\`\`\`js\n${error.name}: "${error.message}"\n\`\`\``)
             .setTimestamp();
 
             (channel as TextChannel).send(embed);

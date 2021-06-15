@@ -11,8 +11,8 @@ interface Command {
     usage: string[];
     scope: 'guild' | 'dm' | 'all';
 
-    run: (args: CommandArguments) => void;
-}
+    run: (args: CommandArguments) => Promise<void> | void;
+};
 
 interface MainClient extends BaseClient {
     commands?: Collection<string, Command>;
@@ -22,34 +22,34 @@ interface MainClient extends BaseClient {
     mongoDB: string;
 
     getOwner: () => Promise<User>;
-}
+};
 
 interface DB {
     getGuild: (key: string) => Promise<any>;
-}
+};
 
 export interface CommandArguments {
     embed: MessageEmbed;
     client: MainClient;
     args: string[];
-    data: Data
+    data: Data;
     message: Message;
     msg: Message;
-}
+};
 
 export interface Data {
-    guild: GuildDB
-}
+    guild: GuildDB;
+};
 
 export interface GuildDB {
     id: string;
-    prefix?: string
-}
+    prefix?: string;
+};
 
 export interface Event {
     name: keyof ClientEvents;
     emitter: 'on' | 'once';
     emit: (...args: any) => void;
-}
+};
 
-export type LoggerType = 'error' | 'warn' | 'info' | 'log';
+export type LoggerType = 'error' | 'warn' | 'info' | 'log' | 'load' | 'connect';

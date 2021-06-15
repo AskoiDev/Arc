@@ -21,6 +21,6 @@ export const event: Event = {
         });
 
         client.user?.setActivity({ name: `over ${client.guilds.cache.size} server(s)`, type: 'WATCHING' })
-        return logger('info', `Logged in as ${client.user?.tag}`);
+        return logger('connect', `Connected to Discord as ${client.user?.tag}`);
     }
 };
