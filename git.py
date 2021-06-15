@@ -14,7 +14,7 @@ def add() -> None:
 
 def commit(message: str) -> None:
     if checkgit() == True and len(message) > 1:
-        system('git commit -m "{}"'.format(message))
+        system('git commit -q -m "{}"'.format(message))
     
     elif len(message) == 0:
         print('({RED}Error{RESET}): Invalid commit message'.format(RED=Fore.RED, RESET=Fore.RESET))
