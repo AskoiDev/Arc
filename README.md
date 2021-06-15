@@ -34,7 +34,7 @@ $ npm run build
 
 ## Running
 You can either use [`npm`](https://npmjs.org/ 'NPM') or [`node`](https://nodejs.org/ 'NodeJS').
-```
+```bash
 # For development use
 $ node . # Or node dist/index.js
 
