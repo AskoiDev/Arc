@@ -1,5 +1,5 @@
 import { Command } from '../../../typings/index';
-import fetch from 'node-fetch';
+import { reddit } from '../../utils/reddit.js';
 
 export const command: Command = {
     name: 'meme',
@@ -13,23 +13,11 @@ export const command: Command = {
     nsfw: false,
 
     async run({ embed, message }): Promise<void> {
-        const subArr: string[] = ['memes', 'dankmemes'].map(x => `https://api.reddit.com/r/${x}.json`);
-        const sub = subArr[Math.floor(Math.random() * subArr.length)];
+        const subs: string[] = ['memes', 'dankmemes'].map(x => `https://api.reddit.com/r/${x}.json`);
+        const sub = subs[Math.floor(Math.random() * subs.length)];
 
-
-        const memes = await fetch(sub);
-        if (memes.status === 200) {
-            const meme = (await memes.json()).data.children;
-            const post = meme[Math.floor(Math.random() * meme.length)].data;
-
-            embed
-            .setTitle(post.title)
-            .setImage(post.url_overridden_by_dest)
-            .setColor('RANDOM');
-
-            message.channel.send(embed);
-        }
+        await reddit(sub, message, embed);
 
         return;
     }
-}
+};

@@ -70,7 +70,7 @@ export const event: Event = {
                 embed
                 .setTitle('Error')
                 .setDescription('This command can only be used in NSFW locked channels or my DMs')
-                .setColor(0xFF000);
+                .setColor(0xFF0000);
 
                 return message.channel.send(embed);
             }

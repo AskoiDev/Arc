@@ -1,5 +1,5 @@
 import { Command } from '../../../typings/index';
-import fetch from 'node-fetch';
+import { reddit } from '../../utils/reddit.js';
 
 export const command: Command = {
     name: 'hentai',
@@ -12,7 +12,12 @@ export const command: Command = {
     scope: 'all',
     nsfw: true,
 
-    async run({ msg }): Promise<void> {
-        msg.channel.send('You have been fooled')
+    async run({ message, embed }): Promise<void> {
+        const subs: string[] = ['hentai'].map(x => `https://api.reddit.com/r/${x}.json`);
+        const sub = subs[Math.floor(Math.random() * subs.length)];
+
+        await reddit(sub, message, embed);
+
+        return;
     }
-}
+};
