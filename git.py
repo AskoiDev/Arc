@@ -28,4 +28,4 @@ def commit(message: str) -> None:
         _exit(1)
 
 def push() -> None:
-    system('git push &> /dev/null')
+    system('git push -q')
