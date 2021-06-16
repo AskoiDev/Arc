@@ -12,7 +12,7 @@ interface Command {
     scope: 'guild' | 'dm' | 'all';
     nsfw: boolean;
 
-    run: (args: CommandArguments) => Promise<void> | void;
+    run: (args: CommandArguments) => Promise<any> | any;
 };
 
 interface MainClient extends BaseClient {

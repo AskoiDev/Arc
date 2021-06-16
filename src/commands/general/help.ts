@@ -9,11 +9,11 @@ export const command: Command = {
     dev: false,
     owner: false,
     desc: 'Get info on a specific command',
-    usage: ['{prefix}help', '{prefix}help <command name>'],
+    usage: ['{prefix}help', '{prefix}help <command>'],
     scope: 'all',
     nsfw: false,
 
-    async run({ embed, client, message, args}): Promise<void> {
+    async run({ embed, client, message, args}): Promise<any> {
         const cmd: Command | undefined = args[0] ? (client.commands?.get(args[0].toLowerCase()) || client.commands?.find(cmd => cmd.aliases && cmd.aliases.includes(args[0].toLowerCase()))) : undefined;
 
         if (cmd && cmd !== undefined) {
@@ -29,10 +29,10 @@ export const command: Command = {
             .addField('Category', cmd.category, true)
             .addField('Owner only?', `\`${cmd.owner}\``, true)
             .addField('Dev only?', `\`${cmd.dev}\``, true)
+            .addField('NSFW?', `\`${cmd.nsfw}\``, true)
             .addField('Scope', `\`${cmd.scope}\``, true)
 
-            message.channel.send(embed);
-            return;
+            return message.channel.send(embed);
         } else {
             const commandsArr = help(client);
 
@@ -45,8 +45,7 @@ export const command: Command = {
                 embed.addField(command.category, command.names);
             }
 
-            message.channel.send(embed);
-            return;
-        }
+            return message.channel.send(embed);
+        };
     }
-}
+};

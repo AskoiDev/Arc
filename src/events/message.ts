@@ -36,10 +36,22 @@ export const event: Event = {
             let [cmd, ...args] = message.content.slice(prefix.length).trim().split(/ +/);
             cmd = cmd.trim().toLowerCase();
             
-            let command: Command | undefined = client.commands?.get(cmd);
+            let command: Command | undefined = client.commands?.get(cmd) || client.commands?.find(x => x.aliases.includes(cmd));
             if (!command || command === undefined) return;
 
-            if ((command.dev && message.author.id !== client.ownerID) || (message.guild) && (command.owner && message.author.id !== message.guild?.ownerID)) {
+            if ((message.guild) && (command.owner && message.author.id !== message.guild?.ownerID)) {
+                embed
+                .setTitle('Error')
+                .setDescription('You don\'t have access to this command')
+                .setColor(0xFF000)
+
+                return message.channel.send(embed);
+            }
+
+            else if (command.dev && message.author.id !== client.ownerID) {
+                console.log(command.dev, message.author.id !== client.ownerID);
+                console.log(client.ownerID, message.author.id);
+
                 embed
                 .setTitle('Error')
                 .setDescription('You don\'t have access to this command')

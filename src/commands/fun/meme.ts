@@ -16,8 +16,6 @@ export const command: Command = {
         const subs: string[] = ['memes', 'dankmemes'].map(x => `https://api.reddit.com/r/${x}.json`);
         const sub = subs[Math.floor(Math.random() * subs.length)];
 
-        await reddit(sub, message, embed);
-
-        return;
+        return await reddit(sub, message, embed);
     }
 };

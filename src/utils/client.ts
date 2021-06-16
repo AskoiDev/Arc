@@ -12,7 +12,7 @@ export class Client extends BaseClient {
     constructor(options?: ClientOptions) {
         super(options);
 
-        this.ownerID = config.userID.ownerID
+        this.ownerID = config.userID.botOwner;
         this.mongoDB = config.mongoDB;
 
         this.data = {} as DB;

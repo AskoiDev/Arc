@@ -11,9 +11,9 @@ export const command: Command = {
     scope: 'all',
     nsfw: false,
 
-    async run({ message, client }): Promise<void> {
-        message.channel.send('Pinging...').then(msg => {
-            msg.edit(`**Server Latency**: \`${Math.floor(msg.createdTimestamp - message.createdTimestamp)}ms\`\n**API Latency**: \`${Math.round(client.ws.ping)}ms\``);
+    async run({ message, client }): Promise<any> {
+        return message.channel.send('Pinging...').then(msg => {
+            return msg.edit(`**Server Latency**: \`${Math.floor(msg.createdTimestamp - message.createdTimestamp)}ms\`\n**API Latency**: \`${Math.round(client.ws.ping)}ms\``);
         });
     }
-}
+};
